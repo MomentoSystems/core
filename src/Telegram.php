@@ -214,7 +214,7 @@ class Telegram
             throw new TelegramException('Invalid API KEY defined!');
         }
         
-        if($bot_username !== ''){
+        if( ($bot_username !== '') && (strlen($bot_username) >=5) && (strlen($bot_username) <=32) ){
           preg_match('/(.*)(bot)$/', strtolower($bot_username), $bot_username_match);
           if ( count($bot_username_match) == 0 ) {
             throw new TelegramException("Invalid your bot username must end in 'bot', e.g. 'tetris_bot' or 'TetrisBot'.");
