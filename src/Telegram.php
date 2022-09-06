@@ -213,6 +213,14 @@ class Telegram
         if (!isset($matches[1])) {
             throw new TelegramException('Invalid API KEY defined!');
         }
+        if($bot_username !== ''){
+             
+          preg_match('/(.*)(bot)$/', strtolower($bot_username), $bot_username_match);
+          if ( count($bot_username_match) == 0 ) {
+            throw new TelegramException("Invalid your bot username must end in 'bot', e.g. 'tetris_bot' or 'TetrisBot'.");
+          }
+        }
+        
         $this->bot_id  = (int) $matches[1];
         $this->api_key = $api_key;
 
